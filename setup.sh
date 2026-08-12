@@ -84,6 +84,25 @@ install_ctan_script() { # name, url
   ok "$name installed at $BINDIR/$name"
 }
 
+install_latexmk_aur() {
+  if have latexmk; then
+    skip "latexmk already installed at $(command -v latexmk)"
+    return
+  fi
+  if have pacman && have makepkg && (( ROOTLESS == 0 )); then
+    info "installing latexmk via makepkg (from GitHub PKGBUILD)"
+    local tmp
+    tmp="$(mktemp -d)"
+    git clone https://github.com/sea-deep/latexmk-standalone.git "$tmp/latexmk" </dev/null >/dev/null 2>&1
+    (cd "$tmp/latexmk" && makepkg -si --noconfirm)
+    rm -rf "$tmp"
+    ok "latexmk installed via pacman"
+  else
+    info "Arch tools missing or rootless forced, falling back to standalone latexmk script"
+    install_ctan_script latexmk "$LATEXMK_URL"
+  fi
+}
+
 write_latexmkrc() {
   local rc="$HOME/.latexmkrc"
   if [[ -f "$rc" ]] && grep -q tectonic "$rc" 2>/dev/null; then
@@ -141,7 +160,7 @@ summary() {
 }
 
 install_tectonic
-install_ctan_script latexmk "$LATEXMK_URL"
+install_latexmk_aur
 install_ctan_script texcount "$TEXCOUNT_URL"
 write_latexmkrc
 merge_vscode_settings
