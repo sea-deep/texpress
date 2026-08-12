@@ -1,8 +1,6 @@
-# ⚡ texpress
+# texpress
 
-> **Stop downloading 4.5 GB of TeX Live just to compile a TeX document.**
-
-`texpress` is an ultra-lightweight, zero-bloat LaTeX toolchain for Arch Linux and VS Code. Powered by **Tectonic** (a modern, Rust-based C++ TeX engine that fetches TeX packages on-demand) and standalone CTAN scripts (`latexmk`, `texcount`), `texpress` slashes your LaTeX disk footprint from **~4.5 GB down to ~95 MB** — a **98%+ reduction**.
+`texpress` is a minimal LaTeX toolchain for Arch Linux and VS Code. It uses **Tectonic** (a Rust-based TeX engine that fetches packages on-demand) and standalone scripts (`latexmk`, `texcount`) to keep the installation footprint small.
 
 ---
 
@@ -24,7 +22,7 @@
 Run the automated installer:
 
 ```bash
-git clone https://github.com/<your-user>/texpress.git
+git clone https://github.com/sea-deep/texpress.git
 cd texpress
 ./setup.sh
 ```
