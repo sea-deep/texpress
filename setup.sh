@@ -139,7 +139,7 @@ merge_vscode_settings() {
   "latex-workshop.latex.tools": [{
     "name": "tectonic",
     "command": "$tec_path",
-    "args": ["-X", "compile", "%DOC_EXT%", "--keep-intermediates", "--keep-logs", "--synctex"]
+    "args": ["-X", "compile", "%DOC_EXT%", "--keep-intermediates", "--keep-logs", "--synctex", "-Z", "continue-on-errors"]
   }]
 }
 EOF
