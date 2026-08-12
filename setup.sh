@@ -125,9 +125,12 @@ merge_vscode_settings() {
     skip "LaTeX Workshop extension already installed"
   fi
   [[ -f "$VSCODE_SETTINGS" ]] || { echo '{}' > "$VSCODE_SETTINGS"; }
+  local tec_path
+  tec_path="$(command -v tectonic)"
+  
   local patch
   patch="$(mktemp)"
-  cat > "$patch" <<'JSON'
+  cat > "$patch" <<EOF
 {
   "latex-workshop.latex.recipe.default": "tectonic",
   "latex-workshop.latex.autoBuild.run": "onSave",
@@ -135,11 +138,11 @@ merge_vscode_settings() {
   "latex-workshop.latex.recipes": [{ "name": "tectonic", "tools": ["tectonic"] }],
   "latex-workshop.latex.tools": [{
     "name": "tectonic",
-    "command": "tectonic",
+    "command": "$tec_path",
     "args": ["-X", "compile", "%DOC_EXT%", "--keep-intermediates", "--keep-logs", "--synctex"]
   }]
 }
-JSON
+EOF
   if jq -e '."latex-workshop.latex.tools" != null' "$VSCODE_SETTINGS" >/dev/null 2>&1; then
     skip "VS Code settings already have LaTeX Workshop config"
   else
