@@ -1,0 +1,5 @@
+# texpress latexmk configuration
+# Makes latexmk drive tectonic instead of pdflatex, so a single script
+# (installed by setup.sh from CTAN) replaces ~1 GB+ of TeX Live.
+$pdf_mode = 1;
+$pdflatex = "tectonic --synctex %O %S";

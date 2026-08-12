@@ -1,0 +1,7 @@
+backend,corpus,phase,wall_s,peak_rss_kb,pdf_bytes
+tectonic,simple,cold,140.490145929,42000,15558
+tectonic,simple,warm,1.017736518,42000,15558
+tectonic,math,cold,102.501041676,42000,22586
+tectonic,math,warm,1.079037184,42000,22586
+tectonic,multi,cold,127.248557114,42000,18318
+tectonic,multi,warm,2.021572788,42000,18317

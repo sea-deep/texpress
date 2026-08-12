@@ -1,0 +1,26 @@
+# LaTeX / TeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# benchmark scratch
+bench/results/*.tmp
+*.csv.orig
+
+# AUR build artifacts
+aur/*/*.pkg.tar.zst
+aur/*/pkg/
+aur/*/src/
+aur/*/*.zip
+
+*.pdf
