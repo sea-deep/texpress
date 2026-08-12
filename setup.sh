@@ -135,11 +135,12 @@ merge_vscode_settings() {
   "latex-workshop.latex.recipe.default": "tectonic",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.outDir": "%DIR%/build",
   "latex-workshop.latex.recipes": [{ "name": "tectonic", "tools": ["tectonic"] }],
   "latex-workshop.latex.tools": [{
     "name": "tectonic",
     "command": "$tec_path",
-    "args": ["-X", "compile", "%DOC_EXT%", "--keep-intermediates", "--keep-logs", "--synctex", "-Z", "continue-on-errors"]
+    "args": ["-X", "compile", "%DOC_EXT%", "--keep-intermediates", "--keep-logs", "--synctex", "-Z", "continue-on-errors", "--outdir", "%OUTDIR%"]
   }]
 }
 EOF
